@@ -1,0 +1,10 @@
+---
+- name: Arista Config Backup
+  eos_command:
+    commands:
+      - show running-config
+  register: show_run
+
+- copy:
+    content: "{{ show_run.output[0].result.output }}"
+    dest: "/Users/fitzadd/Documents/NetDevOps/GitHub/device-config-backup/device_backups/{{date_time_now}}-config.txt"

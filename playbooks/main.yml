@@ -1,0 +1,7 @@
+- name: Playbook
+  hosts: arista
+  #connection: network_cli
+  gather_facts: False
+
+  roles:
+  - config-backups
