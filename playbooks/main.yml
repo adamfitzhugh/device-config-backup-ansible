@@ -1,6 +1,6 @@
 - name: Playbook
   hosts: arista
-  #connection: network_cli
+  connection: network_cli
   gather_facts: False
 
   roles:

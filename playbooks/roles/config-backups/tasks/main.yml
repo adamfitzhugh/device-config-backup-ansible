@@ -5,6 +5,7 @@
       - show running-config
   register: show_run
 
-- copy:
+- name: Copy Backup to File
+  copy:
     content: "{{ show_run.output[0].result.output }}"
     dest: "/Users/fitzadd/Documents/NetDevOps/GitHub/device-config-backup/device_backups/{{date_time_now}}-config.txt"
