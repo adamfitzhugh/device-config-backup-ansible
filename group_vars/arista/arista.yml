@@ -1,0 +1,26 @@
+---
+platform: eos
+ansible_python_interpreter: /Users/fitzadd/Documents/NetDevOps/arista-af/bin/python
+
+provider_eapi:
+  host: "{{ ansible_host }}"
+  transport: eapi
+  #use_ssl: yes
+  validate_certs: no
+  username: "arista"
+  password: "arista"
+  authorize: yes
+  auth_pass: "arista"
+  timeout: 60
+
+provider_cli:
+  host: "{{ ansible_host }}"
+  transport: cli
+  use_ssl: yes
+  username: "arista"
+  password: "arista"
+  authorize: yes
+  auth_pass: "arista"
+  timeout: 60
+
+date_time_now: "{{lookup('pipe','date \"+%d-%m-%Y\"')}}"
