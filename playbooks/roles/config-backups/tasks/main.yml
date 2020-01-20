@@ -1,4 +1,5 @@
 ---
+# Take Arista vEOS Backups
 - name: Arista Config Backup
   eos_command:
     commands:
@@ -9,3 +10,27 @@
   copy:
     content: "{{ show_run.output[0].result.output }}"
     dest: "/Users/fitzadd/Documents/NetDevOps/GitHub/device-config-backup/device_backups/{{date_time_now}}-config.txt"
+
+# Take Cisco IOS Backups
+- name: Cisco IOS Config Backup
+  ios_command:
+    commands:
+      - show running-config
+  register: config_output
+
+- name: Copy Backup to File
+  copy:
+    content: "{{ config_output.stdout[0] }}"
+    dest: "/Users/fitzadd/Documents/NetDevOps/GitHub/arista-ansible/device_backups/cisco-ios/{{ hostname }}_{{date_time_now}}_running-config.txt"
+
+# Take Cisco NXOS Backups
+- name: Cisco NXOS Config Backup
+  eos_command:
+    commands:
+      - show running-config
+  register: config_output
+
+- name: Copy Backup to File
+  copy:
+    content: "{{ config_output.stdout[0] }}"
+    dest: "/Users/fitzadd/Documents/NetDevOps/GitHub/arista-ansible/device_backups/cisco-nxos/{{ hostname }}_{{date_time_now}}_running-config.txt"
