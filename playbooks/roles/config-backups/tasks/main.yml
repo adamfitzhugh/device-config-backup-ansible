@@ -14,29 +14,29 @@
   when: "'arista_veos' in group_names"
 
 # Take Cisco IOS Backups
-- name: Cisco IOS Config Backup
-  ios_command:
-    commands:
-      - show running-config
-  register: config_output
-  when: "'cisco_ios' in group_names"
+#- name: Cisco IOS Config Backup
+#  ios_command:
+#    commands:
+#      - show running-config
+#  register: config_output
+#  when: "'cisco_ios' in group_names"
 
-- name: Copy Backup to File
-  copy:
-    content: "{{ config_output.stdout[0] }}"
-    dest: "/Users/fitzadd/Documents/NetDevOps/GitHub/device-config-backup/device_backups/{{ ansible_host }}_{{date_time_now}}_running-config.conf"
-  when: "'cisco_ios' in group_names"
+#- name: Copy Backup to File
+#  copy:
+#    content: "{{ config_output.stdout[0] }}"
+#    dest: "/Users/fitzadd/Documents/NetDevOps/GitHub/device-config-backup/device_backups/{{ ansible_host }}_{{date_time_now}}_running-config.conf"
+#  when: "'cisco_ios' in group_names"
 
 # Take Cisco NXOS Backups
-- name: Cisco NXOS Config Backup
-  nxos_command:
-    commands:
-      - show running-config
-  register: config_output
-  when: "'cisco_nxos' in group_names"
+#- name: Cisco NXOS Config Backup
+#  nxos_command:
+#    commands:
+#      - show running-config
+#  register: config_output
+#  when: "'cisco_nxos' in group_names"
 
-- name: Copy Backup to File
-  copy:
-    content: "{{ config_output.stdout[0] }}"
-    dest: "/Users/fitzadd/Documents/NetDevOps/GitHub/device-config-backup/device_backups/{{ ansible_host }}_{{date_time_now}}_running-config.conf"
-  when: "'cisco_nxos' in group_names"
+#- name: Copy Backup to File
+#  copy:
+#    content: "{{ config_output.stdout[0] }}"
+#    dest: "/Users/fitzadd/Documents/NetDevOps/GitHub/device-config-backup/device_backups/{{ ansible_host }}_{{date_time_now}}_running-config.conf"
+#  when: "'cisco_nxos' in group_names"

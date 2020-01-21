@@ -7,20 +7,20 @@ provider_eapi:
   transport: eapi
   #use_ssl: yes
   validate_certs: no
-  username: "arista"
-  password: "arista"
+  username: "{{ username }}"
+  password: "{{ password }}"
   authorize: yes
-  auth_pass: "arista"
+  auth_pass: "{{ enable_password }}"
   timeout: 60
 
 provider_cli:
   host: "{{ ansible_host }}"
   transport: cli
   use_ssl: yes
-  username: "arista"
-  password: "arista"
+  username: "{{ username }}"
+  password: "{{ password }}"
   authorize: yes
-  auth_pass: "arista"
+  auth_pass: "{{ enable_password }}"
   timeout: 60
 
 date_time_now: "{{lookup('pipe','date \"+%d-%m-%Y\"')}}"

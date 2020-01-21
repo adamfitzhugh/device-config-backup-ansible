@@ -6,3 +6,14 @@
 
   roles:
   - config-backups
+
+  vars_prompt:
+    - name: "username"
+      prompt: "Please input your username"
+      private: no
+    - name: "password"
+      prompt: "Please input your password"
+      private: yes
+    - name: "enable_password"
+      prompt: "Please input your enable password"
+      private: yes
