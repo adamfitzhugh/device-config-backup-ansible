@@ -7,13 +7,14 @@
   roles:
   - config-backups
 
-  vars_prompt:
-    - name: "username"
-      prompt: "Please input your username"
-      private: no
-    - name: "password"
-      prompt: "Please input your password"
-      private: yes
-    - name: "enable_password"
-      prompt: "Please input your enable password"
-      private: yes
+# Use this vars_prompt for Radius
+#  vars_prompt:
+#    - name: "username"
+#      prompt: "Username"
+#      private: no
+#    - name: "password"
+#      prompt: "Password"
+#      private: yes
+#    - name: "enable_password"
+#      prompt: "Enable Password"
+#      private: yes
