@@ -1,5 +1,6 @@
 - name: Playbook
-  hosts: arista
+  #hosts: cisco_ios:arista_veos
+  hosts: all
   connection: network_cli
   gather_facts: False
 
