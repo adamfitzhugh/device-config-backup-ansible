@@ -3,14 +3,16 @@
 - name: Arista Config Backup
   eos_command:
     commands:
-      - show running-config
+      #- show running-config
+      - show version 
+      - show ip interface brief
   register: show_run
   when: "'arista_veos' in group_names"
 
 - name: Copy Backup to File
   copy:
     content: "{{ show_run.stdout[0] }}"
-    dest: "/Users/fitzadd/Documents/NetDevOps/GitHub/device-config-backup/device_backups/{{ ansible_host }}_{{date_time_now}}_running-config.conf"
+    dest: "/Users/fitzadd/Documents/NetDevOps/GitHub/device-config-backup/device_backups/{{ ansible_host }}_{{date_time_now}}_running-config.txt"
   when: "'arista_veos' in group_names"
 
 # Take Cisco IOS Backups
@@ -24,7 +26,7 @@
 - name: Copy Backup to File
   copy:
     content: "{{ config_output.stdout[0] }}"
-    dest: "/Users/fitzadd/Documents/NetDevOps/GitHub/device-config-backup/device_backups/{{ ansible_host }}_{{date_time_now}}_running-config.conf"
+    dest: "/Users/fitzadd/Documents/NetDevOps/GitHub/device-config-backup/device_backups/{{ ansible_host }}_{{date_time_now}}_running-config.txt"
   when: "'cisco_ios' in group_names"
 
 # Take Cisco NXOS Backups
@@ -38,5 +40,5 @@
 #- name: Copy Backup to File
 #  copy:
 #    content: "{{ config_output.stdout[0] }}"
-#    dest: "/Users/fitzadd/Documents/NetDevOps/GitHub/device-config-backup/device_backups/{{ ansible_host }}_{{date_time_now}}_running-config.conf"
+#    dest: "/Users/fitzadd/Documents/NetDevOps/GitHub/device-config-backup/device_backups/{{ ansible_host }}_{{date_time_now}}_running-config.txt"
 #  when: "'cisco_nxos' in group_names"
