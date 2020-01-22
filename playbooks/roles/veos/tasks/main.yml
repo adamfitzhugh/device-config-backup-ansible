@@ -1,0 +1,12 @@
+---
+# Take Arista vEOS Backups
+- name: Arista Config Backup
+  eos_command:
+    commands:
+      - show running-config
+  register: show_run
+
+- name: Copy Backup to File
+  copy:
+    content: "{{ show_run.stdout[0] }}"
+    dest: "/Users/fitzadd/Documents/NetDevOps/GitHub/device-config-backup/device_backups/{{ ansible_host }}_{{date_time_now}}_running-config.txt"

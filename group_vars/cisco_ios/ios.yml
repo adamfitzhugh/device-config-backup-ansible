@@ -1,5 +1,2 @@
 ---
 platform: ios
-ansible_python_interpreter: /Users/fitzadd/Documents/NetDevOps/arista-af/bin/python
-
-date_time_now: "{{lookup('pipe','date \"+%d-%m-%Y\"')}}"

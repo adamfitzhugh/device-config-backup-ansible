@@ -1,11 +1,31 @@
-- name: Playbook
-  #hosts: cisco_ios:arista_veos
-  hosts: all
+---
+- name: Arista vEOS Playbook
+  hosts: arista_veos
   connection: network_cli
   gather_facts: False
 
   roles:
-  - config-backups
+  - veos
+
+- name: Cisco IOS Playbook
+  hosts: cisco_ios
+  connection: network_cli
+  gather_facts: False
+
+  roles:
+  - ios
+  
+- name: Cisco NXOS Playbook
+  hosts: cisco_nxos
+  connection: network_cli
+  gather_facts: False
+
+  roles:
+  - nxos
+
+
+
+
 
 # Use this vars_prompt for Radius
 #  vars_prompt:
